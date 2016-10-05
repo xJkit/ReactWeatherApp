@@ -17,7 +17,8 @@ module.exports = {
       WeatherMessage: path.join('app', 'components', 'WeatherMessage.jsx'),
       About: path.join('app', 'components', 'About.jsx'),
       Examples: path.join('app', 'components', 'Examples.jsx'),
-      openWeatherMap: path.join('app', 'api', 'openWeatherMap.jsx')
+      openWeatherMap: path.join('app', 'api', 'openWeatherMap.jsx'),
+      myRouter: path.join('app', 'myRouter.jsx')
     },
     extensions: ['', '.js', '.jsx']
   },
