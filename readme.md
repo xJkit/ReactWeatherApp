@@ -1,4 +1,4 @@
-# React Weather Application Testing!
+# React Weather Application.
 
 Build a Single Page Application with React
 
@@ -8,5 +8,5 @@ Build a Single Page Application with React
 ```
 2. Run node server on port 8080:
 ```
-  npm run server
+  npm run start
 ```
