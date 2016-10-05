@@ -1,8 +1,25 @@
 var path = require('path');
-
+var webpack = require('webpack')
 
 module.exports = {
-  entry: path.join(__dirname, 'app', 'app.jsx'),
+  entry: [
+    path.join('script!jquery', 'dist', 'jquery.min.js'),
+    path.join('script!foundation-sites', 'dist', 'foundation.min.js'),
+    path.join(__dirname, 'app', 'app.jsx')
+  ],
+  externals: {
+    //module-name:variable-name that are available inside the external scripts
+    //this is set for foundation frameworks
+    //make foundation method to attach to jQuery object correctly
+    jquery: 'jQuery'
+  },
+  plugins: [
+    // let webpack loads jQuery to process $ syntax
+    new webpack.ProvidePlugin({
+      '$': 'jquery',
+      'jQuery': 'jquery'
+    })
+  ],
   output: {
     path: path.resolve(__dirname),
     filename: path.join('public', 'bundle.js')
