@@ -1,10 +1,19 @@
-import React from "react";
+import React from 'react'
+import {Link} from 'react-router'
 
-
-let Examples = (props) => {
-  return (
-    <h3>Example pages from stateless fuunctional component</h3>
-  )
-}
+let Examples = (props) => (
+  <div>
+    <h1 className="text-center">Examples</h1>
+    <p>這裡有一些城市的範例供你參考：</p>
+    <ol>
+      <li>
+        <Link to="/?location=Taiwan">Taiwan, TW</Link>
+      </li>
+      <li>
+        <Link to="/?location=California">California, CA</Link>
+      </li>
+    </ol>
+  </div>
+)
 
 module.exports = Examples;
