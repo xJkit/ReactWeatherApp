@@ -6,6 +6,9 @@ import myRouter from 'myRouter' //routing module
 import 'style!css!foundation-sites/dist/foundation.min.css'
 $(document).foundation()
 
+// Custom css
+import 'style!css!applicationStyles'
+
 ReactDOM.render(
   myRouter,
   document.getElementById('root')

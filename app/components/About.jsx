@@ -4,7 +4,7 @@ import React from 'react';
 let About =  (props) => {
   return (
     <div>
-      <h1 className="text-center">關於</h1>
+      <h1 className="text-center page-title">關於</h1>
       <p>這是一個使用 React 開發的天氣查詢網站</p>
       <p>相關技術如下：</p>
       <ul className="">
