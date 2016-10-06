@@ -33,6 +33,7 @@ module.exports = {
       Weather: path.join('app', 'components', 'Weather.jsx'),
       WeatherForm: path.join('app', 'components', 'WeatherForm.jsx'),
       WeatherMessage: path.join('app', 'components', 'WeatherMessage.jsx'),
+      ErrorModal: path.join('app', 'components', 'ErrorModal.jsx'),
       About: path.join('app', 'components', 'About.jsx'),
       Examples: path.join('app', 'components', 'Examples.jsx'),
       openWeatherMap: path.join('app', 'api', 'openWeatherMap.jsx'),

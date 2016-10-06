@@ -16,12 +16,18 @@ module.exports = {
       //若傳輸成功但是 server 仍然回應錯誤訊息的判斷
       /*
         {
-        cod: 401,
-        message: "Invalid API key. Please see http://openweathermap.org/faq#error401 for more info."
+          cod: 401,
+          message: "Invalid API key. Please see http://openweathermap.org/faq#error401 for more info."
+        }
+        找不到城市：
+        {
+          cod: "502",
+          message: "Error: Not found city"
         }
       */
       if (res.data.cod && res.data.message){
-        throw new Error('res.data.message');
+        debugger;
+        throw new Error(res.data.message);
       } else {
         let {coord: {lon, lat}, main: {temp, humidity}, name} = res.data;
         let newData = {
@@ -35,7 +41,7 @@ module.exports = {
       }
     })
     .catch(function(err){
-      throw new Error('err.data.message');
+      throw new Error(err.response.data.message);
     })
   }
 }

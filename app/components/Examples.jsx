@@ -3,7 +3,7 @@ import {Link} from 'react-router'
 
 let Examples = (props) => (
   <div>
-    <h1 className="text-center">Examples</h1>
+    <h1 className="text-center">查詢範例</h1>
     <p>這裡有一些城市的範例供你參考：</p>
     <ol>
       <li>

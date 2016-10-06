@@ -1,6 +1,7 @@
 import React from 'react';
 import WeatherForm from 'WeatherForm';
 import WeatherMessage from 'WeatherMessage';
+import ErrorModal from 'ErrorModal';
 import openWeatherMap from 'openWeatherMap';
 
 let Weather = React.createClass({
@@ -11,11 +12,15 @@ let Weather = React.createClass({
     //   lon: "",
     //   lat: ""
     isLoading: false,
-    error: false
     }
   },
   handleCitySearch: function(updateData) {
-    this.setState({isLoading: true, error: false });
+
+    this.setState({
+      isLoading: true,
+      errorMessage: undefined
+    })
+
     openWeatherMap.getTemp(updateData.city)
     .then(function(newData){
       updateData.temp = newData.temp;
@@ -23,26 +28,26 @@ let Weather = React.createClass({
       updateData.lon = newData.lon;
       updateData.lat = newData.lat;
       updateData.isLoading = false;
-      updateData.error = false;
-
       this.setState(updateData);
       //updateData is an object: {city: xxx}
     }.bind(this))
     .catch(function(err){
-      console.log('發生錯誤： ',err);
+      debugger;
+      console.log('發生錯誤： ' + err);
       this.setState({
         isLoading: false,
-        error: true
-      });
+        errorMessage: err.message
+      })
     }.bind(this))
   },
+
   render: function(){
-    let {city, temp, lon, lat, isLoading, error} = this.state;
+    let {city, temp, lon, lat, isLoading, errorMessage} = this.state;
 
     function renderMessage(){
-      if (isLoading && !error){
+      if (isLoading){
         return (<h1 className="text-center">loading....</h1>);
-      } else if (city && temp && lon && lat && !error &&!isLoading){
+      } else if (city && temp && lon && lat){
         return (
           <WeatherMessage
           cityName={city}
@@ -51,12 +56,16 @@ let Weather = React.createClass({
           cityLat={lat}
           />
         )
-      } else if (error){
+      }
+    }
+
+    function renderError(){
+      if (typeof errorMessage === 'string') {
         return (
-          <h1>找不到資料！</h1>
-        );
-      } else{
-        return;
+          <ErrorModal
+            message={errorMessage}
+          />
+        )
       }
     }
 
@@ -65,6 +74,7 @@ let Weather = React.createClass({
           <h3 className="text-center">Get Weather</h3>
           <WeatherForm onCitySearch={this.handleCitySearch} />
           {renderMessage()}
+          {renderError()}
         </div>
     );
   }
