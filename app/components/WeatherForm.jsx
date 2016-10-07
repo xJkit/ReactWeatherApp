@@ -4,13 +4,11 @@ let WeatherForm = React.createClass({
 
   onFormSubmit: function(e) {
     e.preventDefault();
-    let updateData = {};
     let cityName = this.refs.city.value;
     //validation input data
     if (cityName.length > 0){
       this.refs.city.value = ""; //clear input value
-      updateData.city = cityName;
-      this.props.onCitySearch(updateData);
+      this.props.onCitySearch(cityName);
     }
   },
   render: function() {

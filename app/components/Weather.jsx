@@ -12,16 +12,33 @@ let Weather = React.createClass({
     //   lon: "",
     //   lat: ""
     isLoading: false,
+    errorMessage: undefined,
+    temp: undefined,
+    city: undefined,
+    lon: undefined,
+    lat: undefined
     }
   },
-  handleCitySearch: function(updateData) {
+
+  componentWillReceiveProps: function(nextProps){
+    let location =  nextProps.location.query.location
+    // let encodedLocation = encodeURIComponent(location)
+    if (location && location.length > 0){
+      this.handleCitySearch(location)
+      window.location.hash = '#/'
+    }
+  },
+
+  handleCitySearch: function(loc) {
 
     this.setState({
       isLoading: true,
       errorMessage: undefined
     })
 
-    openWeatherMap.getTemp(updateData.city)
+    let updateData = {}
+
+    openWeatherMap.getTemp(loc)
     .then(function(newData){
       updateData.temp = newData.temp;
       updateData.city = newData.city;
@@ -32,7 +49,6 @@ let Weather = React.createClass({
       //updateData is an object: {city: xxx}
     }.bind(this))
     .catch(function(err){
-      debugger;
       console.log('發生錯誤： ' + err);
       this.setState({
         isLoading: false,
@@ -77,6 +93,14 @@ let Weather = React.createClass({
           {renderError()}
         </div>
     );
+  },
+
+  componentDidMount: function(){
+    let location = this.props.location.query.location
+    if (location && location.length > 0){
+      this.handleCitySearch(location)
+      window.location.hash = '#/'
+    }
   }
 });
 

@@ -4,8 +4,10 @@ import NavLink from 'NavLink';
 const Nav = React.createClass({
   onSearch: function(e){
         e.preventDefault()
-        console.log(`You enter: ${e.target.elements[0].value}`)
-
+        let city = this.refs.searchCity.value
+        let encodedCity = encodeURIComponent(city)
+        this.refs.searchCity.value = ''
+        window.location.hash ='#/?location=' + encodedCity
   },
   render: function(){
     return (
@@ -28,7 +30,7 @@ const Nav = React.createClass({
           <form onSubmit={this.onSearch}>
             <ul className="menu">
               <li>
-                <input type="text" placeholder="Search weather"/>
+                <input type="text" placeholder="Search weather" ref="searchCity"/>
               </li>
               <li>
                 <input type="submit" className="button hollow" value="Get Weather"/>
