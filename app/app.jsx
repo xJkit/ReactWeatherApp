@@ -7,7 +7,7 @@ import 'style!css!foundation-sites/dist/foundation.min.css'
 $(document).foundation()
 
 // Custom css
-import 'style!css!applicationStyles'
+import 'style!css!sass!applicationStyles'
 
 ReactDOM.render(
   myRouter,

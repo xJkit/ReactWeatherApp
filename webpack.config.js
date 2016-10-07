@@ -36,9 +36,9 @@ module.exports = {
       ErrorModal: path.join('app', 'components', 'ErrorModal.jsx'),
       About: path.join('app', 'components', 'About.jsx'),
       Examples: path.join('app', 'components', 'Examples.jsx'),
-      openWeatherMap: path.join('app', 'api', 'openWeat`herMap.jsx'),
+      openWeatherMap: path.join('app', 'api', 'openWeatherMap.jsx'),
       myRouter: path.join('app', 'myRouter.jsx'),
-      applicationStyles: path.join('app', 'styles', 'app.css')
+      applicationStyles: path.join('app', 'styles', 'app.scss')
     },
     extensions: ['', '.js', '.jsx']
   },
