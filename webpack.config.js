@@ -27,20 +27,15 @@ module.exports = {
   resolve: {
     root: __dirname,
     alias: {
-      Main: path.join('app', 'components', 'Main.jsx'),
-      Nav: path.join('app', 'components', 'Nav.jsx'),
-      NavLink: path.join('app', 'components', 'NavLink.jsx'),
-      Weather: path.join('app', 'components', 'Weather.jsx'),
-      WeatherForm: path.join('app', 'components', 'WeatherForm.jsx'),
-      WeatherMessage: path.join('app', 'components', 'WeatherMessage.jsx'),
-      ErrorModal: path.join('app', 'components', 'ErrorModal.jsx'),
-      About: path.join('app', 'components', 'About.jsx'),
-      Examples: path.join('app', 'components', 'Examples.jsx'),
       openWeatherMap: path.join('app', 'api', 'openWeatherMap.jsx'),
       myRouter: path.join('app', 'myRouter.jsx'),
       applicationStyles: path.join('app', 'styles', 'app.scss')
     },
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx'],
+    modulesDirectories: [
+      'node_modules',
+      './app/components'
+    ]
   },
   module: {
     loaders: [
